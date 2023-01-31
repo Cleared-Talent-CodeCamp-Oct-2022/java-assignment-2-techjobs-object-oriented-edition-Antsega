@@ -38,6 +38,7 @@ public class Employer {
         return Objects.hash(getId());
     }
 
+
     // Getters and Setters:
 
     public int getId() {
