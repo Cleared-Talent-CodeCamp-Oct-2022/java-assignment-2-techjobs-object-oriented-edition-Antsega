@@ -76,6 +76,8 @@ public class Job {
         return employer;
     }
 
+    public String getEmployerName() { return this.employer.toString();}
+
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
@@ -106,5 +108,18 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+    public String toString() {
+            String string = "ID: ";
+            string += getId() + " \n";
+            return string;
+    }
+
+    public String toStringName() {
+        String string = "Name: ";
+        if (getName().equals("") || getName().equals(" ")) string += "Data not available \n";
+        else string += getName() + " \n";
+        return string;
     }
 }

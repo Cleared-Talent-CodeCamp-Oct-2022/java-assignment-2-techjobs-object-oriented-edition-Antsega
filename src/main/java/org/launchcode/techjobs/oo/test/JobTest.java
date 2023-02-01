@@ -64,4 +64,43 @@ public class JobTest {
         // test passes if identical objects are not equal (id not the same)
         assertFalse(job1.equals(job2));
     }
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        // create objects to be evaluated
+        Employer ACME = new Employer("ACME");
+        Location Desert = new Location("Desert");
+        PositionType qualityControl = new PositionType("Quality control");
+        CoreCompetency Persistence = new CoreCompetency("Persistence");
+        Job job1 = new Job("Product tester", new Employer(ACME.getValue()), new Location(Desert.getValue()), new PositionType(qualityControl.getValue()), new CoreCompetency(Persistence.getValue()));
+        Job job2 = new Job("", new Employer(ACME.getValue()), new Location(Desert.getValue()), new PositionType(qualityControl.getValue()), new CoreCompetency(Persistence.getValue()));
+
+        assertEquals(job1.toString(), "ID: 0 \n");
+        assertEquals(job1.toStringName(), "Name: " + job1.getName() + " \n");
+    }
+
+    @Test
+    public void testToStringContainsCorrectLavelsAndData() {
+        Employer ACME = new Employer("ACME");
+        Location Desert = new Location("Desert");
+        PositionType qualityControl = new PositionType("Quality control");
+        CoreCompetency Persistence = new CoreCompetency("Persistence");
+        Job job1 = new Job("Product tester", new Employer(ACME.getValue()), new Location(Desert.getValue()), new PositionType(qualityControl.getValue()), new CoreCompetency(Persistence.getValue()));
+        Job job2 = new Job("", new Employer(ACME.getValue()), new Location(Desert.getValue()), new PositionType(qualityControl.getValue()), new CoreCompetency(Persistence.getValue()));
+
+        assertEquals(ACME.toString(), job1.getEmployer().toString());
+        assertEquals(Desert.toString(), job1.getLocation().toString());
+        assertEquals(qualityControl.toString(), job1.getPositionType().toString());
+        assertEquals(Persistence.toString(), job1.getCoreCompetency().toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Employer ACME = new Employer("ACME");
+        Location Desert = new Location("Desert");
+        PositionType qualityControl = new PositionType("Quality control");
+        CoreCompetency Persistence = new CoreCompetency("Persistence");
+        Job job2 = new Job("", new Employer(ACME.getValue()), new Location(Desert.getValue()), new PositionType(qualityControl.getValue()), new CoreCompetency(Persistence.getValue()));
+
+        assertEquals(job2.toStringName(), "Name: Data not available \n");
+    }
 }
