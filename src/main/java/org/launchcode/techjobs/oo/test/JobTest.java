@@ -79,7 +79,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringContainsCorrectLavelsAndData() {
+    public void testToStringContainsCorrectLabelsAndData() {
         Employer ACME = new Employer("ACME");
         Location Desert = new Location("Desert");
         PositionType qualityControl = new PositionType("Quality control");

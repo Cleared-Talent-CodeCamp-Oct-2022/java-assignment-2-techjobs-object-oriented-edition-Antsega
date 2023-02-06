@@ -5,16 +5,17 @@ import org.junit.Test;
 import java.util.Objects;
 
 abstract public class JobField {
-    private static int id;
+    private final int id;
     private String value;
+    private static int nextId;
 
     public JobField() {
-        id++;
-        this.id = id;
+        id=nextId;
+        nextId++;
     }
     public JobField(String value) {
         this();
-        this.value = (value.equals("") || value.equals(" ") || value == null ? "Data not available " : value);
+        this.value = (value.equals("") || value.equals(" ") || value.equals(null) ? "Data not available " : value);
     }
 
     @Override
@@ -32,7 +33,7 @@ abstract public class JobField {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 
     public int getId() {
