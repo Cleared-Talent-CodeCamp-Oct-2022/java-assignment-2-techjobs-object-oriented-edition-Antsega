@@ -110,12 +110,9 @@ public class Job {
     }
 
     public String toString() {
-        String[] categories = new String[]{"ID: ","Employer: ", "Location: ", "Position Type: "};
+        String[] categories = new String[]{"ID: ","Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
         String string = "";
-        // employer
-        // job
-        // location
-        // position type
+
         for (int i = 0; i < 1; i++) {
             if (getName().equals("") || getName().equals(" ")) string += "Data not available \n";
             if (getEmployer().equals("") || getEmployer().equals(" ")) string += "Data not available \n";
@@ -123,9 +120,11 @@ public class Job {
             if (getName().equals("") || getName().equals(" ")) string += "Data not available \n";
             if (getLocation().equals("") || getLocation().equals(" ")) string += "Data not available \n";
         else string += categories[0] + getId() + "\n" +
-                    getEmployer() + "\n" +
-                    categories[2] + getLocation() + "\n" +
-                    getPositionType() + "\n";
+                    categories[1] + getName() + "\n" +
+                    getEmployer() +
+                    getLocation() +
+                    getPositionType() +
+                    getCoreCompetency();
     }
         return string;
     }
